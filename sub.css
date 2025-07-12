@@ -1,0 +1,363 @@
+body {
+    background: var(--color-white);
+}
+
+.sub-hero {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/forest-bg-2.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.bread-wrapper {
+    margin-bottom: 2rem;
+}
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.breadcrumbs li a {
+    color: var(--color-white);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.breadcrumbs li a:hover {
+    color: var(--color-primary);
+}
+
+.breadcrumbs li:last-child {
+    color: var(--color-white);
+    opacity: 0.8;
+}
+
+.main-copy {
+    color: var(--color-white);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+}
+
+.main-copy h1 {
+    margin: 0 0 1.5rem;
+}
+
+.sub-desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.cabin-gallery {
+    padding: 4rem 1rem;
+    background: var(--color-bg);
+}
+
+/* Override some styles from index.css for the cabins page */
+.featured-cabins {
+    margin-top: 0;
+}
+
+.cabin-card {
+    background: var(--color-white);
+}
+
+.cabin-cta {
+    color: var(--color-text);
+}
+
+.cabin-cta:hover {
+    color: var(--color-primary);
+}
+
+/* FAQ Styles */
+.faq-section {
+    padding: 4rem 1rem;
+    background: var(--color-bg);
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-group {
+    margin-bottom: 3rem;
+}
+
+.faq-group h2 {
+    color: var(--color-text);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.faq-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.faq-item {
+    background: var(--color-white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.faq-item summary {
+    padding: 1.25rem;
+    cursor: pointer;
+    font-weight: 500;
+    list-style: none;
+    position: relative;
+    padding-right: 3rem;
+}
+
+.faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    transition: transform 0.3s ease;
+}
+
+.faq-item[open] summary::after {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.faq-item p {
+    padding: 0 1.25rem 1.25rem;
+    margin: 0;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Reservation Styles */
+.reservation-section {
+    padding: 4rem 1rem;
+    background: var(--color-bg);
+    position: relative;
+    padding-bottom: 100px; /* Make room for fern */
+    margin-bottom: 0;
+}
+
+.reservation-section .fern {
+    width: 120px;
+    position: absolute;
+    bottom: 0;
+    right: 40px;
+    opacity: 0.7;
+    transform: translateY(50%) rotate(-15deg);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Fern decoration for all sub-pages */
+.cabin-listings,
+.faq-section,
+.reservation-section {
+    position: relative;
+    padding-bottom: 100px;
+    margin-bottom: 0;
+}
+
+.cabin-listings .fern,
+.faq-section .fern,
+.reservation-section .fern {
+    width: 120px;
+    position: absolute;
+    bottom: 0;
+    right: 40px;
+    opacity: 0.7;
+    transform: translateY(50%) rotate(-15deg);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Ensure proper spacing with footer */
+.site-footer {
+    position: relative;
+    z-index: 1;
+}
+
+.reservation-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 2rem;
+}
+
+.reservation-form {
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group h2 {
+    color: var(--color-text);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font: inherit;
+    transition: var(--transition);
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(114, 168, 74, 0.2);
+}
+
+.form-field.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-actions {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.submit-btn {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.reservation-info {
+    display: grid;
+    gap: 2rem;
+    align-content: start;
+}
+
+.info-card {
+    background: var(--color-white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+}
+
+.info-card h3 {
+    color: var(--color-text);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.info-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-card li {
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+.info-card p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .sub-hero {
+        min-height: 60vh;
+    }
+
+    .main-copy {
+        padding: 6rem 2rem;
+        text-align: left;
+    }
+
+    .bread-wrapper {
+        margin-bottom: 3rem;
+    }
+
+    .sub-desc {
+        font-size: 1.2rem;
+    }
+
+    .faq-section,
+    .reservation-section {
+        padding: 6rem 2rem;
+    }
+
+    .form-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reservation-container {
+        grid-template-columns: 2fr 1fr;
+        align-items: start;
+    }
+}
+
+@media (min-width: 1024px) {
+    .sub-hero {
+        min-height: 70vh;
+    }
+
+    .main-copy {
+        padding: 8rem 2rem;
+    }
+
+    .faq-section,
+    .reservation-section {
+        padding: 8rem 2rem;
+    }
+}

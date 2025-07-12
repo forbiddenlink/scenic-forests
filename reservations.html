@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Book your perfect forest cabin getaway">
+        <title>Reservations - Scenic Forests</title>
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="sub.css">
+        <link rel="icon" type="image/svg+xml" href="images/fern.svg">
+    </head>
+    <body>
+        <div class="sub-hero">
+            <div class="wrapper no-padding">
+                <header>
+                    <a href="index.html" class="logo" aria-label="Scenic Forests Home">scenic.forests</a>
+                    
+                    <nav aria-label="Main navigation">
+                        <button class="menu-button" id="menu-btn" aria-label="Open menu">
+                            <img src="images/menu.svg" class="menu" alt="">
+                        </button>
+                        
+                        <ul class="nav" id="nav">
+                            <li class="exit" id="exit-btn">
+                                <button aria-label="Close menu"><img src="images/exit.svg" alt=""></button>
+                            </li>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="cabins.html">Cabins</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li class="res active"><a href="reservations.html" aria-current="page">Reservations</a></li>
+                        </ul>
+                    </nav>
+                </header>
+            </div>
+            
+            <div class="wrapper hero">
+                <div class="main-copy">
+                    <nav class="bread-wrapper" aria-label="Breadcrumb">
+                        <ul class="breadcrumbs">
+                            <li><a href="index.html">Home</a></li>
+                            <li aria-current="page">> Make a Reservation</li>
+                        </ul>
+                    </nav>
+                    
+                    <h1>
+                        <span>Make a Reservation</span>
+                    </h1>
+                    
+                    <p class="sub-desc">Book your perfect forest getaway. Fill out the form below to start your reservation.</p>
+                </div>
+            </div>
+        </div>
+
+        <main class="wrapper reservation-section">
+            <div class="reservation-container">
+                <form class="reservation-form" action="#" method="POST" id="bookingForm">
+                    <div class="form-group">
+                        <h2>Guest Information</h2>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h2>Reservation Details</h2>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="cabin">Select Cabin *</label>
+                                <select id="cabin" name="cabin" required>
+                                    <option value="">Choose a cabin...</option>
+                                    <option value="whispering-willows">Whispering Willows</option>
+                                    <option value="pine-haven">Pine Haven</option>
+                                    <option value="forest-ridge">Forest Ridge</option>
+                                    <option value="cedar-creek">Cedar Creek</option>
+                                    <option value="maple-grove">Maple Grove</option>
+                                    <option value="birch-haven">Birch Haven</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="checkIn">Check-in Date *</label>
+                                <input type="date" id="checkIn" name="checkIn" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="checkOut">Check-out Date *</label>
+                                <input type="date" id="checkOut" name="checkOut" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="guests">Number of Guests *</label>
+                                <select id="guests" name="guests" required>
+                                    <option value="">Select number of guests...</option>
+                                    <option value="1">1 Guest</option>
+                                    <option value="2">2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5 Guests</option>
+                                    <option value="6">6 Guests</option>
+                                    <option value="7">7 Guests</option>
+                                    <option value="8">8 Guests</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h2>Special Requests</h2>
+                        <div class="form-row">
+                            <div class="form-field full-width">
+                                <label for="requests">Additional Requests or Comments</label>
+                                <textarea id="requests" name="requests" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Check Availability</button>
+                    </div>
+                </form>
+
+                <aside class="reservation-info">
+                    <div class="info-card">
+                        <h3>Booking Information</h3>
+                        <ul>
+                            <li>Check-in time: 4:00 PM</li>
+                            <li>Check-out time: 11:00 AM</li>
+                            <li>Minimum stay: 2 nights</li>
+                            <li>50% deposit required to confirm booking</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>Need Help?</h3>
+                        <p>Our reservation team is here to assist you with your booking.</p>
+                        <ul class="contact-info">
+                            <li>Phone: (555) 123-4567</li>
+                            <li>Email: bookings@scenicforests.com</li>
+                            <li>Hours: Mon-Fri, 9AM-5PM EST</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+            
+            <img src="images/fern.svg" class="fern" alt="" aria-hidden="true">
+        </main>
+        
+        <footer class="site-footer">
+            <div class="wrapper footer-content">
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <address>
+                        <p>1234 Forest Drive</p>
+                        <p>Woodland, ST 12345</p>
+                        <p><a href="tel:+1234567890">123-456-7890</a></p>
+                        <p><a href="mailto:info@scenicforests.com">info@scenicforests.com</a></p>
+                    </address>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="cabins.html">Our Cabins</a></li>
+                        <li><a href="reservations.html">Book Now</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Amenities</h4>
+                    <ul>
+                        <li>High-Speed WiFi</li>
+                        <li>Private Hot Tubs</li>
+                        <li>Fully Stocked Kitchens</li>
+                        <li>Scenic Views</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="wrapper">
+                    <p>&copy; 2024 Scenic Forests. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+        
+        <script type="module" src="index.js"></script>
+    </body>
+</html> 
