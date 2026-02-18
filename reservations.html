@@ -2,205 +2,253 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Book your perfect forest cabin getaway">
-        <title>Reservations - Scenic Forests</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Submit a Scenic Forests reservation request. Select cabin, dates, and guest details to check availability.">
+        <meta name="theme-color" content="#1e3a2a">
+        <title>Reservations | Scenic Forests</title>
+
+        <link rel="canonical" href="https://scenicforests.com/reservations.html">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="sub.css">
         <link rel="icon" type="image/svg+xml" href="images/fern.svg">
+
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Reservations | Scenic Forests">
+        <meta property="og:description" content="Choose your cabin and dates to request availability in under two minutes.">
+        <meta property="og:url" content="https://scenicforests.com/reservations.html">
+        <meta property="og:image" content="https://scenicforests.com/images/forest.jpg">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Reservations | Scenic Forests">
+        <meta name="twitter:description" content="Simple booking request flow with fast confirmation.">
+        <meta name="twitter:image" content="https://scenicforests.com/images/forest.jpg">
+
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://scenicforests.com/"},
+                    {"@type": "ListItem", "position": 2, "name": "Reservations", "item": "https://scenicforests.com/reservations.html"}
+                ]
+            }
+        </script>
     </head>
     <body>
-        <div class="sub-hero">
-            <div class="wrapper no-padding">
-                <header>
-                    <a href="index.html" class="logo" aria-label="Scenic Forests Home">scenic.forests</a>
-                    
-                    <nav aria-label="Main navigation">
-                        <button class="menu-button" id="menu-btn" aria-label="Open menu">
-                            <img src="images/menu.svg" class="menu" alt="">
-                        </button>
-                        
-                        <ul class="nav" id="nav">
-                            <li class="exit" id="exit-btn">
-                                <button aria-label="Close menu"><img src="images/exit.svg" alt=""></button>
-                            </li>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="cabins.html">Cabins</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                            <li class="res active"><a href="reservations.html" aria-current="page">Reservations</a></li>
-                        </ul>
-                    </nav>
-                </header>
+        <a class="skip-link" href="#main-content">Skip to main content</a>
+
+        <header class="site-header">
+            <div class="wrapper header-inner">
+                <a href="index.html" class="logo" aria-label="Scenic Forests home">scenic.forests</a>
+
+                <button class="menu-button" id="menu-btn" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation menu">
+                    <span class="menu-label">Menu</span>
+                    <span class="menu-icon" aria-hidden="true"></span>
+                </button>
+
+                <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+                    <ul class="nav-list">
+                        <li><a class="nav-link" href="index.html">Home</a></li>
+                        <li><a class="nav-link" href="cabins.html">Cabins</a></li>
+                        <li><a class="nav-link" href="faq.html">FAQ</a></li>
+                        <li><a class="nav-link nav-cta current" href="reservations.html" aria-current="page">Reserve Now</a></li>
+                    </ul>
+                </nav>
             </div>
-            
-            <div class="wrapper hero">
-                <div class="main-copy">
-                    <nav class="bread-wrapper" aria-label="Breadcrumb">
-                        <ul class="breadcrumbs">
+        </header>
+
+        <main id="main-content" class="site-main">
+            <section class="sub-hero">
+                <div class="wrapper reveal">
+                    <nav aria-label="Breadcrumb">
+                        <ol class="breadcrumb">
                             <li><a href="index.html">Home</a></li>
-                            <li aria-current="page">> Make a Reservation</li>
-                        </ul>
+                            <li aria-current="page">Reservations</li>
+                        </ol>
                     </nav>
-                    
-                    <h1>
-                        <span>Make a Reservation</span>
-                    </h1>
-                    
-                    <p class="sub-desc">Book your perfect forest getaway. Fill out the form below to start your reservation.</p>
+                    <p class="eyebrow">Availability Request</p>
+                    <h1>Reserve Your Cabin Stay</h1>
+                    <p>
+                        Fill out the form and we’ll confirm availability, exact pricing, and next steps within one business day.
+                    </p>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <main class="wrapper reservation-section">
-            <div class="reservation-container">
-                <form class="reservation-form" action="#" method="POST" id="bookingForm">
-                    <div class="form-group">
-                        <h2>Guest Information</h2>
-                        <div class="form-row">
-                            <div class="form-field">
-                                <label for="firstName">First Name *</label>
-                                <input type="text" id="firstName" name="firstName" required>
-                            </div>
-                            <div class="form-field">
-                                <label for="lastName">Last Name *</label>
-                                <input type="text" id="lastName" name="lastName" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-field">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-field">
-                                <label for="phone">Phone Number *</label>
-                                <input type="tel" id="phone" name="phone" required>
-                            </div>
-                        </div>
-                    </div>
+            <section class="reservation-section" aria-labelledby="reservation-heading">
+                <div class="wrapper reservation-layout">
+                    <form class="reservation-form reveal" id="bookingForm" action="#" method="post" novalidate>
+                        <h2 class="section-title" id="reservation-heading">Booking Form</h2>
+                        <p class="section-lead">Fields marked with * are required.</p>
 
-                    <div class="form-group">
-                        <h2>Reservation Details</h2>
-                        <div class="form-row">
-                            <div class="form-field">
-                                <label for="cabin">Select Cabin *</label>
-                                <select id="cabin" name="cabin" required>
-                                    <option value="">Choose a cabin...</option>
-                                    <option value="whispering-willows">Whispering Willows</option>
-                                    <option value="pine-haven">Pine Haven</option>
-                                    <option value="forest-ridge">Forest Ridge</option>
-                                    <option value="cedar-creek">Cedar Creek</option>
-                                    <option value="maple-grove">Maple Grove</option>
-                                    <option value="birch-haven">Birch Haven</option>
-                                </select>
+                        <div class="form-group">
+                            <h2>Guest Details</h2>
+                            <div class="form-grid cols-2">
+                                <div class="form-field">
+                                    <label for="firstName">First name *</label>
+                                    <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="lastName">Last name *</label>
+                                    <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="email">Email address *</label>
+                                    <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="phone">Phone number *</label>
+                                    <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="(555) 123-4567" required>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-field">
-                                <label for="checkIn">Check-in Date *</label>
-                                <input type="date" id="checkIn" name="checkIn" required>
-                            </div>
-                            <div class="form-field">
-                                <label for="checkOut">Check-out Date *</label>
-                                <input type="date" id="checkOut" name="checkOut" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-field">
-                                <label for="guests">Number of Guests *</label>
-                                <select id="guests" name="guests" required>
-                                    <option value="">Select number of guests...</option>
-                                    <option value="1">1 Guest</option>
-                                    <option value="2">2 Guests</option>
-                                    <option value="3">3 Guests</option>
-                                    <option value="4">4 Guests</option>
-                                    <option value="5">5 Guests</option>
-                                    <option value="6">6 Guests</option>
-                                    <option value="7">7 Guests</option>
-                                    <option value="8">8 Guests</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <h2>Special Requests</h2>
-                        <div class="form-row">
-                            <div class="form-field full-width">
-                                <label for="requests">Additional Requests or Comments</label>
-                                <textarea id="requests" name="requests" rows="4"></textarea>
+                        <div class="form-group">
+                            <h2>Trip Details</h2>
+                            <div class="form-grid cols-2">
+                                <div class="form-field full">
+                                    <label for="cabin">Select cabin *</label>
+                                    <select id="cabin" name="cabin" required>
+                                        <option value="">Choose a cabin</option>
+                                        <option value="whispering-willows">Whispering Willows</option>
+                                        <option value="pine-haven">Pine Haven</option>
+                                        <option value="forest-ridge">Forest Ridge</option>
+                                        <option value="cedar-creek">Cedar Creek</option>
+                                        <option value="maple-grove">Maple Grove</option>
+                                        <option value="birch-haven">Birch Haven</option>
+                                    </select>
+                                </div>
+                                <div class="form-field">
+                                    <label for="checkIn">Check-in date *</label>
+                                    <input type="date" id="checkIn" name="checkIn" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="checkOut">Check-out date *</label>
+                                    <input type="date" id="checkOut" name="checkOut" required>
+                                    <span class="field-hint">Minimum stay: 2 nights on most dates.</span>
+                                </div>
+                                <div class="form-field">
+                                    <label for="guests">Guests *</label>
+                                    <select id="guests" name="guests" required>
+                                        <option value="">Select guest count</option>
+                                        <option value="1">1 guest</option>
+                                        <option value="2">2 guests</option>
+                                        <option value="3">3 guests</option>
+                                        <option value="4">4 guests</option>
+                                        <option value="5">5 guests</option>
+                                        <option value="6">6 guests</option>
+                                        <option value="7">7 guests</option>
+                                        <option value="8">8 guests</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-actions">
-                        <button type="submit" class="submit-btn">Check Availability</button>
-                    </div>
-                </form>
+                        <div class="form-group">
+                            <h2>Notes</h2>
+                            <div class="form-grid">
+                                <div class="form-field">
+                                    <label for="requests">Special requests</label>
+                                    <textarea id="requests" name="requests" placeholder="Accessibility needs, arrival notes, celebration details, etc."></textarea>
+                                </div>
+                            </div>
+                        </div>
 
-                <aside class="reservation-info">
-                    <div class="info-card">
-                        <h3>Booking Information</h3>
-                        <ul>
-                            <li>Check-in time: 4:00 PM</li>
-                            <li>Check-out time: 11:00 AM</li>
-                            <li>Minimum stay: 2 nights</li>
-                            <li>50% deposit required to confirm booking</li>
-                        </ul>
-                    </div>
-                    <div class="info-card">
-                        <h3>Need Help?</h3>
-                        <p>Our reservation team is here to assist you with your booking.</p>
-                        <ul class="contact-info">
-                            <li>Phone: (555) 123-4567</li>
-                            <li>Email: bookings@scenicforests.com</li>
-                            <li>Hours: Mon-Fri, 9AM-5PM EST</li>
-                        </ul>
-                    </div>
-                </aside>
-            </div>
-            
-            <img src="images/fern.svg" class="fern" alt="" aria-hidden="true">
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Check Availability</button>
+                            <a class="btn btn-secondary" href="cabins.html">View Cabins</a>
+                        </div>
+
+                        <p class="form-status" id="formStatus" aria-live="polite"></p>
+                    </form>
+
+                    <aside class="side-panel">
+                        <article class="info-card reveal summary-card" aria-live="polite">
+                            <h3>Live Estimate</h3>
+                            <dl class="summary-list">
+                                <div>
+                                    <dt>Cabin</dt>
+                                    <dd id="summaryCabin">Not selected</dd>
+                                </div>
+                                <div>
+                                    <dt>Dates</dt>
+                                    <dd id="summaryDates">Choose check-in and check-out</dd>
+                                </div>
+                                <div>
+                                    <dt>Guests</dt>
+                                    <dd id="summaryGuests">Choose guest count</dd>
+                                </div>
+                                <div>
+                                    <dt>Nights</dt>
+                                    <dd id="summaryNights">0 nights</dd>
+                                </div>
+                                <div class="total-row">
+                                    <dt>Est. subtotal</dt>
+                                    <dd id="summarySubtotal">$0</dd>
+                                </div>
+                            </dl>
+                            <p class="field-hint">Estimate excludes taxes, cleaning, and seasonal fees.</p>
+                        </article>
+
+                        <article class="info-card reveal">
+                            <h3>Booking Basics</h3>
+                            <ul>
+                                <li>Check-in from 4:00 PM</li>
+                                <li>Check-out by 11:00 AM</li>
+                                <li>50% deposit secures reservation</li>
+                                <li>Digital welcome guide sent pre-arrival</li>
+                            </ul>
+                        </article>
+
+                        <article class="info-card reveal">
+                            <h3>Need Help Choosing?</h3>
+                            <p>Tell us your dates, group size, and stay style. We’ll recommend the best cabin match.</p>
+                            <ul>
+                                <li><a href="mailto:hello@scenicforests.com">hello@scenicforests.com</a></li>
+                                <li><a href="tel:+11234567890">+1 (123) 456-7890</a></li>
+                                <li>Mon-Fri, 9:00 AM to 5:00 PM ET</li>
+                            </ul>
+                        </article>
+                    </aside>
+                </div>
+            </section>
         </main>
-        
+
         <footer class="site-footer">
-            <div class="wrapper footer-content">
-                <div class="footer-section">
-                    <h4>Contact Us</h4>
-                    <address>
-                        <p>1234 Forest Drive</p>
-                        <p>Woodland, ST 12345</p>
-                        <p><a href="tel:+1234567890">123-456-7890</a></p>
-                        <p><a href="mailto:info@scenicforests.com">info@scenicforests.com</a></p>
-                    </address>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
+            <div class="wrapper footer-grid">
+                <section class="footer-card" aria-label="Contact information">
+                    <h3>Contact</h3>
+                    <p>1234 Forest Drive, Woodland, ST 12345</p>
+                    <p><a href="tel:+11234567890">+1 (123) 456-7890</a></p>
+                    <p><a href="mailto:hello@scenicforests.com">hello@scenicforests.com</a></p>
+                </section>
+
+                <section class="footer-card" aria-label="Quick navigation">
+                    <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="cabins.html">Our Cabins</a></li>
-                        <li><a href="reservations.html">Book Now</a></li>
-                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="index.html">Back to homepage</a></li>
+                        <li><a href="cabins.html">Browse cabins</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
                     </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Amenities</h4>
+                </section>
+
+                <section class="footer-card" aria-label="Guest support">
+                    <h3>Guest Promise</h3>
                     <ul>
-                        <li>High-Speed WiFi</li>
-                        <li>Private Hot Tubs</li>
-                        <li>Fully Stocked Kitchens</li>
-                        <li>Scenic Views</li>
+                        <li>Clear pricing and policies</li>
+                        <li>Response in under one business day</li>
+                        <li>Locally curated activity recommendations</li>
                     </ul>
-                </div>
+                </section>
             </div>
-            
-            <div class="footer-bottom">
-                <div class="wrapper">
-                    <p>&copy; 2024 Scenic Forests. All rights reserved.</p>
-                </div>
+
+            <div class="wrapper footer-bottom">
+                <p>&copy; 2026 Scenic Forests. All rights reserved.</p>
             </div>
         </footer>
-        
+
         <script type="module" src="index.js"></script>
     </body>
-</html> 
+</html>

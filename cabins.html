@@ -2,203 +2,310 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Browse our collection of luxury forest cabins">
-        <title>Our Cabins - Scenic Forests</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Browse all Scenic Forests cabins with pricing, guest capacity, and amenities. Find your ideal forest retreat.">
+        <meta name="theme-color" content="#1e3a2a">
+        <title>Cabin Collection | Scenic Forests</title>
+
+        <link rel="canonical" href="https://scenicforests.com/cabins.html">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="sub.css">
         <link rel="icon" type="image/svg+xml" href="images/fern.svg">
+
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Cabin Collection | Scenic Forests">
+        <meta property="og:description" content="Compare cabins by size, amenities, and nightly rate to pick your best-fit stay.">
+        <meta property="og:url" content="https://scenicforests.com/cabins.html">
+        <meta property="og:image" content="https://scenicforests.com/images/cabin1.jpg">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Cabin Collection | Scenic Forests">
+        <meta name="twitter:description" content="Six curated cabin stays designed for restful forest travel.">
+        <meta name="twitter:image" content="https://scenicforests.com/images/cabin1.jpg">
+
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://scenicforests.com/"},
+                    {"@type": "ListItem", "position": 2, "name": "Cabins", "item": "https://scenicforests.com/cabins.html"}
+                ]
+            }
+        </script>
     </head>
     <body>
-        <div class="sub-hero">
-            <div class="wrapper no-padding">
-                <header>
-                    <a href="index.html" class="logo" aria-label="Scenic Forests Home">scenic.forests</a>
-                    
-                    <nav aria-label="Main navigation">
-                        <button class="menu-button" id="menu-btn" aria-label="Open menu">
-                            <img src="images/menu.svg" class="menu" alt="">
-                        </button>
-                        
-                        <ul class="nav" id="nav">
-                            <li class="exit" id="exit-btn">
-                                <button aria-label="Close menu"><img src="images/exit.svg" alt=""></button>
-                            </li>
-                            <li><a href="index.html">Home</a></li>
-                            <li class="active"><a href="cabins.html" aria-current="page">Cabins</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                            <li class="res"><a href="reservations.html">Reservations</a></li>
-                        </ul>
-                    </nav>
-                </header>
-            </div>
-            
-            <div class="wrapper hero">
-                <div class="main-copy">
-                    <nav class="bread-wrapper" aria-label="Breadcrumb">
-                        <ul class="breadcrumbs">
-                            <li><a href="index.html">Home</a></li>
-                            <li aria-current="page">> Our Cabins</li>
-                        </ul>
-                    </nav>
-                    
-                    <h1>
-                        <span>Our Cabins</span>
-                    </h1>
-                    
-                    <p class="sub-desc">Discover our collection of handpicked luxury cabins, each offering a unique blend of comfort and natural beauty. From cozy retreats to spacious family lodges, find your perfect forest escape.</p>
-                </div>
-            </div>
-        </div>
+        <a class="skip-link" href="#main-content">Skip to main content</a>
 
-        <main class="wrapper cabin-gallery">
-            <ul class="featured-cabins" aria-label="Cabin listings">
-                <li>
-                    <article class="cabin-card" id="whispering-willows">
-                        <a href="reservations.html?cabin=whispering-willows" class="cabin-link">
-                            <img src="images/cabin1.jpg" class="cabin-img" alt="Whispering Willows cabin exterior">
-                        </a>
-                        
-                        <div class="cabin-content">
-                            <h2 class="cabin-title">Whispering Willows</h2>
-                            <p class="cabin-desc">Luxurious 3-bedroom cabin nestled in the heart of the forest, featuring panoramic views and modern amenities.</p>
-                            
-                            <a href="reservations.html?cabin=whispering-willows" class="cabin-cta">
-                                <span>Book Now</span>
-                                <img src="images/arrows-black.svg" alt="">
-                            </a>
-                        </div>
-                    </article>
-                </li>
-                <li>
-                    <article class="cabin-card" id="pine-haven">
-                        <a href="reservations.html?cabin=pine-haven" class="cabin-link">
-                            <img src="images/cabin2.jpg" class="cabin-img" alt="Pine Haven cabin exterior">
-                        </a>
-                        
-                        <div class="cabin-content">
-                            <h2 class="cabin-title">Pine Haven</h2>
-                            <p class="cabin-desc">Cozy 2-bedroom retreat perfect for families, complete with a wraparound deck and private hot tub.</p>
-                            
-                            <a href="reservations.html?cabin=pine-haven" class="cabin-cta">
-                                <span>Book Now</span>
-                                <img src="images/arrows-black.svg" alt="">
-                            </a>
-                        </div>
-                    </article>
-                </li>
-                <li>
-                    <article class="cabin-card" id="forest-ridge">
-                        <a href="reservations.html?cabin=forest-ridge" class="cabin-link">
-                            <img src="images/cabin3.jpg" class="cabin-img" alt="Forest Ridge cabin exterior">
-                        </a>
-                        
-                        <div class="cabin-content">
-                            <h2 class="cabin-title">Forest Ridge</h2>
-                            <p class="cabin-desc">Stunning 4-bedroom luxury cabin with gourmet kitchen and outdoor entertainment area.</p>
-                            
-                            <a href="reservations.html?cabin=forest-ridge" class="cabin-cta">
-                                <span>Book Now</span>
-                                <img src="images/arrows-black.svg" alt="">
-                            </a>
-                        </div>
-                    </article>
-                </li>
-                <li>
-                    <article class="cabin-card" id="cedar-creek">
-                        <a href="reservations.html?cabin=cedar-creek" class="cabin-link">
-                            <img src="images/cabin1.jpg" class="cabin-img" alt="Cedar Creek cabin exterior">
-                        </a>
-                        
-                        <div class="cabin-content">
-                            <h2 class="cabin-title">Cedar Creek</h2>
-                            <p class="cabin-desc">Intimate 1-bedroom cabin perfect for romantic getaways, featuring a private deck and forest views.</p>
-                            
-                            <a href="reservations.html?cabin=cedar-creek" class="cabin-cta">
-                                <span>Book Now</span>
-                                <img src="images/arrows-black.svg" alt="">
-                            </a>
-                        </div>
-                    </article>
-                </li>
-                <li>
-                    <article class="cabin-card" id="maple-grove">
-                        <a href="reservations.html?cabin=maple-grove" class="cabin-link">
-                            <img src="images/cabin2.jpg" class="cabin-img" alt="Maple Grove cabin exterior">
-                        </a>
-                        
-                        <div class="cabin-content">
-                            <h2 class="cabin-title">Maple Grove</h2>
-                            <p class="cabin-desc">Spacious 3-bedroom cabin with modern amenities, perfect for family gatherings and group retreats.</p>
-                            
-                            <a href="reservations.html?cabin=maple-grove" class="cabin-cta">
-                                <span>Book Now</span>
-                                <img src="images/arrows-black.svg" alt="">
-                            </a>
-                        </div>
-                    </article>
-                </li>
-                <li>
-                    <article class="cabin-card" id="birch-haven">
-                        <a href="reservations.html?cabin=birch-haven" class="cabin-link">
-                            <img src="images/cabin3.jpg" class="cabin-img" alt="Birch Haven cabin exterior">
-                        </a>
-                        
-                        <div class="cabin-content">
-                            <h2 class="cabin-title">Birch Haven</h2>
-                            <p class="cabin-desc">Elegant 2-bedroom cabin featuring a chef's kitchen and expansive outdoor living space.</p>
-                            
-                            <a href="reservations.html?cabin=birch-haven" class="cabin-cta">
-                                <span>Book Now</span>
-                                <img src="images/arrows-black.svg" alt="">
-                            </a>
-                        </div>
-                    </article>
-                </li>
-            </ul>
-            
-            <img src="images/fern.svg" class="fern" alt="" aria-hidden="true">
-        </main>
-        
-        <footer class="site-footer">
-            <div class="wrapper footer-content">
-                <div class="footer-section">
-                    <h4>Contact Us</h4>
-                    <address>
-                        <p>1234 Forest Drive</p>
-                        <p>Woodland, ST 12345</p>
-                        <p><a href="tel:+1234567890">123-456-7890</a></p>
-                        <p><a href="mailto:info@scenicforests.com">info@scenicforests.com</a></p>
-                    </address>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="cabins.html">Our Cabins</a></li>
-                        <li><a href="reservations.html">Book Now</a></li>
-                        <li><a href="faq.html">FAQs</a></li>
+        <header class="site-header">
+            <div class="wrapper header-inner">
+                <a href="index.html" class="logo" aria-label="Scenic Forests home">scenic.forests</a>
+
+                <button class="menu-button" id="menu-btn" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation menu">
+                    <span class="menu-label">Menu</span>
+                    <span class="menu-icon" aria-hidden="true"></span>
+                </button>
+
+                <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+                    <ul class="nav-list">
+                        <li><a class="nav-link" href="index.html">Home</a></li>
+                        <li><a class="nav-link current" href="cabins.html" aria-current="page">Cabins</a></li>
+                        <li><a class="nav-link" href="faq.html">FAQ</a></li>
+                        <li><a class="nav-link nav-cta" href="reservations.html">Reserve Now</a></li>
                     </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Amenities</h4>
-                    <ul>
-                        <li>High-Speed WiFi</li>
-                        <li>Private Hot Tubs</li>
-                        <li>Fully Stocked Kitchens</li>
-                        <li>Scenic Views</li>
-                    </ul>
-                </div>
+                </nav>
             </div>
-            
-            <div class="footer-bottom">
-                <div class="wrapper">
-                    <p>&copy; 2024 Scenic Forests. All rights reserved.</p>
+        </header>
+
+        <main id="main-content" class="site-main">
+            <section class="sub-hero">
+                <div class="wrapper reveal">
+                    <nav aria-label="Breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="index.html">Home</a></li>
+                            <li aria-current="page">Cabins</li>
+                        </ol>
+                    </nav>
+                    <p class="eyebrow">All Properties</p>
+                    <h1>Cabins for Couples, Families, and Group Weekends</h1>
+                    <p>
+                        Compare layouts, guest capacity, and signature amenities.
+                        Every listing includes complete booking details and a direct path to availability.
+                    </p>
                 </div>
+            </section>
+
+            <section class="cabin-collection" aria-labelledby="cabins-heading">
+                <div class="wrapper">
+                    <div class="section-header">
+                        <h2 class="section-title" id="cabins-heading">Current Collection</h2>
+                        <p class="section-lead">Rates shown are base nightly rates and may vary during peak dates and holidays.</p>
+                    </div>
+
+                    <form class="cabin-toolbar reveal" aria-label="Filter and sort cabins">
+                        <div class="filter-grid">
+                            <div class="filter-field">
+                                <label for="filterGuests">Guests</label>
+                                <select id="filterGuests" name="filterGuests">
+                                    <option value="">Any size</option>
+                                    <option value="2">2+ guests</option>
+                                    <option value="4">4+ guests</option>
+                                    <option value="6">6+ guests</option>
+                                    <option value="8">8 guests</option>
+                                </select>
+                            </div>
+                            <div class="filter-field">
+                                <label for="filterPrice">Nightly rate</label>
+                                <select id="filterPrice" name="filterPrice">
+                                    <option value="">Any budget</option>
+                                    <option value="220">Up to $220</option>
+                                    <option value="280">Up to $280</option>
+                                    <option value="340">Up to $340</option>
+                                </select>
+                            </div>
+                            <div class="filter-field">
+                                <label for="filterPets">Pet-friendly</label>
+                                <select id="filterPets" name="filterPets">
+                                    <option value="">Any</option>
+                                    <option value="yes">Pet-friendly only</option>
+                                </select>
+                            </div>
+                            <div class="filter-field">
+                                <label for="sortCabins">Sort by</label>
+                                <select id="sortCabins" name="sortCabins">
+                                    <option value="featured">Featured</option>
+                                    <option value="price-asc">Price: low to high</option>
+                                    <option value="price-desc">Price: high to low</option>
+                                    <option value="name-asc">Name: A to Z</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="results-meta">
+                            <p id="resultsCount" aria-live="polite">Showing 6 cabins</p>
+                            <button type="button" class="inline-btn" id="clearFilters">Clear filters</button>
+                        </div>
+                    </form>
+
+                    <ul class="cabin-grid" aria-label="Cabin listings">
+                        <li class="reveal" id="whispering-willows">
+                            <article class="cabin-card" data-cabin data-price="280" data-sleeps="6" data-pet-friendly="no" data-name="Whispering Willows">
+                                <a class="cabin-media" href="reservations.html?cabin=whispering-willows">
+                                    <img src="images/cabin1.jpg" alt="Whispering Willows cabin with tall pines" width="1200" height="800" fetchpriority="high" decoding="async">
+                                </a>
+                                <div class="cabin-content">
+                                    <div class="cabin-title-row">
+                                        <h3 class="cabin-title">Whispering Willows</h3>
+                                        <span class="price">$280/night</span>
+                                    </div>
+                                    <p class="cabin-desc">Three-bedroom premium cabin with glass lounge, fire pit, and expansive forest views.</p>
+                                    <p class="cabin-meta">3 bedrooms • 2 baths • Sleeps 6</p>
+                                    <div class="cabin-tag-list">
+                                        <span class="cabin-tag">Hot Tub</span>
+                                        <span class="cabin-tag">Fireplace</span>
+                                        <span class="cabin-tag">Trail Access</span>
+                                    </div>
+                                    <a class="card-link" href="reservations.html?cabin=whispering-willows">Check availability</a>
+                                </div>
+                            </article>
+                        </li>
+
+                        <li class="reveal" id="pine-haven">
+                            <article class="cabin-card" data-cabin data-price="220" data-sleeps="4" data-pet-friendly="yes" data-name="Pine Haven">
+                                <a class="cabin-media" href="reservations.html?cabin=pine-haven">
+                                    <img src="images/cabin2.jpg" alt="Pine Haven cabin with deck seating" width="1200" height="800" loading="lazy" decoding="async">
+                                </a>
+                                <div class="cabin-content">
+                                    <div class="cabin-title-row">
+                                        <h3 class="cabin-title">Pine Haven</h3>
+                                        <span class="price">$220/night</span>
+                                    </div>
+                                    <p class="cabin-desc">Warm two-bedroom retreat designed for couples and small families with open-plan living.</p>
+                                    <p class="cabin-meta">2 bedrooms • 1.5 baths • Sleeps 4</p>
+                                    <div class="cabin-tag-list">
+                                        <span class="cabin-tag">Pet-Friendly</span>
+                                        <span class="cabin-tag">Deck</span>
+                                        <span class="cabin-tag">Hot Tub</span>
+                                    </div>
+                                    <a class="card-link" href="reservations.html?cabin=pine-haven">Check availability</a>
+                                </div>
+                            </article>
+                        </li>
+
+                        <li class="reveal" id="forest-ridge">
+                            <article class="cabin-card" data-cabin data-price="340" data-sleeps="8" data-pet-friendly="no" data-name="Forest Ridge">
+                                <a class="cabin-media" href="reservations.html?cabin=forest-ridge">
+                                    <img src="images/cabin3.jpg" alt="Forest Ridge luxury cabin in the woods" width="1200" height="800" loading="lazy" decoding="async">
+                                </a>
+                                <div class="cabin-content">
+                                    <div class="cabin-title-row">
+                                        <h3 class="cabin-title">Forest Ridge</h3>
+                                        <span class="price">$340/night</span>
+                                    </div>
+                                    <p class="cabin-desc">Large four-bedroom cabin for multi-family stays with chef kitchen and sunset deck.</p>
+                                    <p class="cabin-meta">4 bedrooms • 3 baths • Sleeps 8</p>
+                                    <div class="cabin-tag-list">
+                                        <span class="cabin-tag">Chef Kitchen</span>
+                                        <span class="cabin-tag">Game Loft</span>
+                                        <span class="cabin-tag">Outdoor Dining</span>
+                                    </div>
+                                    <a class="card-link" href="reservations.html?cabin=forest-ridge">Check availability</a>
+                                </div>
+                            </article>
+                        </li>
+
+                        <li class="reveal" id="cedar-creek">
+                            <article class="cabin-card" data-cabin data-price="195" data-sleeps="2" data-pet-friendly="no" data-name="Cedar Creek">
+                                <a class="cabin-media" href="reservations.html?cabin=cedar-creek">
+                                    <img src="images/cabin1.jpg" alt="Cedar Creek one-bedroom cabin near stream" width="1200" height="800" loading="lazy" decoding="async">
+                                </a>
+                                <div class="cabin-content">
+                                    <div class="cabin-title-row">
+                                        <h3 class="cabin-title">Cedar Creek</h3>
+                                        <span class="price">$195/night</span>
+                                    </div>
+                                    <p class="cabin-desc">Compact one-bedroom cabin ideal for romantic escapes and no-itinerary weekends.</p>
+                                    <p class="cabin-meta">1 bedroom • 1 bath • Sleeps 2</p>
+                                    <div class="cabin-tag-list">
+                                        <span class="cabin-tag">Creekside</span>
+                                        <span class="cabin-tag">Private Deck</span>
+                                        <span class="cabin-tag">Fire Pit</span>
+                                    </div>
+                                    <a class="card-link" href="reservations.html?cabin=cedar-creek">Check availability</a>
+                                </div>
+                            </article>
+                        </li>
+
+                        <li class="reveal" id="maple-grove">
+                            <article class="cabin-card" data-cabin data-price="265" data-sleeps="7" data-pet-friendly="no" data-name="Maple Grove">
+                                <a class="cabin-media" href="reservations.html?cabin=maple-grove">
+                                    <img src="images/cabin2.jpg" alt="Maple Grove cabin with large living area" width="1200" height="800" loading="lazy" decoding="async">
+                                </a>
+                                <div class="cabin-content">
+                                    <div class="cabin-title-row">
+                                        <h3 class="cabin-title">Maple Grove</h3>
+                                        <span class="price">$265/night</span>
+                                    </div>
+                                    <p class="cabin-desc">Flexible three-bedroom layout with roomy social spaces for friends and family groups.</p>
+                                    <p class="cabin-meta">3 bedrooms • 2 baths • Sleeps 7</p>
+                                    <div class="cabin-tag-list">
+                                        <span class="cabin-tag">Family Friendly</span>
+                                        <span class="cabin-tag">Board Games</span>
+                                        <span class="cabin-tag">Grill</span>
+                                    </div>
+                                    <a class="card-link" href="reservations.html?cabin=maple-grove">Check availability</a>
+                                </div>
+                            </article>
+                        </li>
+
+                        <li class="reveal" id="birch-haven">
+                            <article class="cabin-card" data-cabin data-price="245" data-sleeps="4" data-pet-friendly="no" data-name="Birch Haven">
+                                <a class="cabin-media" href="reservations.html?cabin=birch-haven">
+                                    <img src="images/cabin3.jpg" alt="Birch Haven cabin with bright interior" width="1200" height="800" loading="lazy" decoding="async">
+                                </a>
+                                <div class="cabin-content">
+                                    <div class="cabin-title-row">
+                                        <h3 class="cabin-title">Birch Haven</h3>
+                                        <span class="price">$245/night</span>
+                                    </div>
+                                    <p class="cabin-desc">Two-bedroom design-forward stay with chef-prep kitchen and spacious reading nook.</p>
+                                    <p class="cabin-meta">2 bedrooms • 2 baths • Sleeps 4</p>
+                                    <div class="cabin-tag-list">
+                                        <span class="cabin-tag">Quiet Zone</span>
+                                        <span class="cabin-tag">Outdoor Lounge</span>
+                                        <span class="cabin-tag">Fast Wi-Fi</span>
+                                    </div>
+                                    <a class="card-link" href="reservations.html?cabin=birch-haven">Check availability</a>
+                                </div>
+                            </article>
+                        </li>
+                    </ul>
+
+                    <p class="empty-results" id="emptyResults" hidden>No cabins match this filter set. Try expanding guests or budget.</p>
+
+                    <p class="cabin-note">
+                        Looking for help choosing? Email <a href="mailto:hello@scenicforests.com">hello@scenicforests.com</a> with your trip dates,
+                        guest count, and preferred vibe, and we’ll recommend the best-fit cabin.
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="wrapper footer-grid">
+                <section class="footer-card" aria-label="Contact information">
+                    <h3>Contact</h3>
+                    <p>1234 Forest Drive, Woodland, ST 12345</p>
+                    <p><a href="tel:+11234567890">+1 (123) 456-7890</a></p>
+                    <p><a href="mailto:hello@scenicforests.com">hello@scenicforests.com</a></p>
+                </section>
+
+                <section class="footer-card" aria-label="Quick navigation">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Back to homepage</a></li>
+                        <li><a href="reservations.html">Start reservation</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </section>
+
+                <section class="footer-card" aria-label="Guest support">
+                    <h3>Guest Promise</h3>
+                    <ul>
+                        <li>Clear pricing and policies</li>
+                        <li>Response in under one business day</li>
+                        <li>Locally curated activity recommendations</li>
+                    </ul>
+                </section>
+            </div>
+
+            <div class="wrapper footer-bottom">
+                <p>&copy; 2026 Scenic Forests. All rights reserved.</p>
             </div>
         </footer>
-        
+
         <script type="module" src="index.js"></script>
     </body>
 </html>

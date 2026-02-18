@@ -1,57 +1,52 @@
-# Scenic Forests - Cabin Rental Website
+# Scenic Forests
 
-A modern and responsive website for a luxury cabin rental service in scenic forest locations. The website features an elegant design that showcases beautiful cabin properties with interactive galleries, detailed amenity information, and a streamlined booking system.
+Scenic Forests is a portfolio-ready multi-page cabin rental website built with semantic HTML, modern CSS, and lightweight JavaScript.
 
-## Features
+## What Was Improved
 
-- Interactive image galleries with smooth transitions and hover effects
-- Responsive design that works beautifully on all devices
-- Modern booking system with date picker and form validation
-- Detailed cabin information pages with amenity icons
-- FAQ section with expandable questions and answers
-- Clean and intuitive navigation system
-- Accessibility-focused implementation
+- Full visual redesign with a stronger brand system (typography, spacing, color, hierarchy)
+- Accessibility upgrades: skip links, keyboard-friendly mobile nav, better focus styles, clearer form labels
+- Performance upgrades: removed GSAP dependency, lazy-loaded non-critical images, reduced-motion support
+- SEO upgrades: canonical tags, Open Graph/Twitter metadata, JSON-LD schema, `robots.txt`, and `sitemap.xml`
+- UX copy refresh across all pages for clearer value proposition and stronger CTAs
+- Reservation flow upgrades with client-side date logic, live nightly subtotal estimates, and inline success/error messaging
+- Interactive cabin discovery tools: filter by guests, budget, pet-friendliness, and sort controls
+- FAQ instant search to quickly surface matching policy answers
+- Homepage trust proof strip and rotating testimonial carousel
+- Sticky booking prompt with dismiss state and lightweight event analytics (`window.dataLayer` + local queue)
 
-## Technologies Used
+## Tech
 
 - HTML5
-- CSS3 with modern features
-- JavaScript for interactive elements
-- Vite for development and building
+- CSS3
+- JavaScript (ES modules)
+- Vite
 
-## Getting Started
+## Run Locally
 
-1. Clone the repository
-2. Install dependencies:
 ```bash
 npm install
-```
-3. Start the development server:
-```bash
 npm run dev
 ```
-4. Open your browser and navigate to `http://localhost:5173`
 
-## Build for Production
+## Build
 
-To create a production build:
 ```bash
 npm run build
 ```
 
-The built files will be in the `dist` directory.
-
 ## Project Structure
 
-- `index.html` - Homepage with featured cabins
-- `cabins.html` - Detailed cabin listings and information
-- `reservations.html` - Booking system and availability
-- `faq.html` - Frequently asked questions
-- `images/` - Image assets and icons
-- `index.css` - Main stylesheet
-- `sub.css` - Additional styles for sub-pages
-- `index.js` - JavaScript functionality
+- `index.html` homepage
+- `cabins.html` cabin collection page
+- `reservations.html` reservation request page
+- `faq.html` FAQ page
+- `index.css` shared design system and global styles
+- `sub.css` sub-page layouts (cabins/faq/reservations)
+- `index.js` nav interactions, reveal animations, and form behavior
+- `robots.txt` crawler directives
+- `sitemap.xml` sitemap entries
 
-## License
+## Deployment Note
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+If deploying to a different domain, update canonical URLs, Open Graph URLs, and sitemap URLs accordingly.
