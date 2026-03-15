@@ -13,5 +13,6 @@
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.35",
     "vite": "^5.0.12"
-  }
+  },
+  "license": "MIT"
 }
