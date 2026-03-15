@@ -23,3 +23,12 @@ Thumbs.db
 
 #Ignore vscode AI rules
 .github/instructions/codacy.instructions.md
+
+# Build output
+.next/
+dist/
+build/
+out/
+
+# Vercel
+.vercel
