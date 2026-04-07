@@ -17,7 +17,7 @@
     "@testing-library/react": "^16.3.2",
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.35",
-    "vite": "^5.0.12",
+    "vite": "^8.0.7",
     "vitest": "^4.1.2"
   },
   "license": "MIT"
