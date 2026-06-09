@@ -13,12 +13,12 @@
     "biome:format": "biome format . --write"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.9",
+    "@biomejs/biome": "^2.4.16",
     "@testing-library/react": "^16.3.2",
-    "autoprefixer": "^10.4.17",
-    "postcss": "^8.5.10",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.15",
     "vite": "^6.4.2",
-    "vitest": "^4.1.2"
+    "vitest": "^4.1.8"
   },
   "license": "MIT",
   "pnpm": {
