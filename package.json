@@ -24,6 +24,7 @@
   "packageManager": "pnpm@10.32.1",
   "pnpm": {
     "overrides": {
+      "browserslist": ">=4.28.7 <5",
       "esbuild": ">=0.28.1",
       "rollup": ">=4.59.0",
       "vite": ">=6.4.2"
