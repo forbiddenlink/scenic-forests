@@ -1,0 +1,3 @@
+# localStorage key name, not a credential. gitleaks generic-api-key matches it on
+# shape only. Scoped to this one line so any other finding still blocks.
+index.js:generic-api-key:181
