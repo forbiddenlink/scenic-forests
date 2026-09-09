@@ -4,10 +4,13 @@
   "version": "1.0.0",
   "description": "A modern cabin rental website",
   "scripts": {
+    "audit": "pnpm audit --audit-level high",
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
+    "check": "pnpm biome:check && pnpm build",
     "preview": "vite preview",
+    "security": "pnpm audit --audit-level high",
     "biome:check": "biome check .",
     "biome:fix": "biome check . --write",
     "biome:format": "biome format . --write"
@@ -25,9 +28,10 @@
   "pnpm": {
     "overrides": {
       "browserslist": ">=4.28.7 <5",
-      "esbuild": ">=0.28.1",
-      "rollup": ">=4.59.0",
-      "vite": ">=6.4.2"
+      "esbuild": ">=0.28.1 <1",
+      "rollup": ">=4.59.0 <5",
+      "vite": ">=6.4.2 <7",
+      "nanoid": "3.3.18"
     }
   }
 }
