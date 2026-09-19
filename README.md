@@ -1,52 +1,53 @@
 # Scenic Forests
 
-Scenic Forests is a portfolio-ready multi-page cabin rental website built with semantic HTML, modern CSS, and lightweight JavaScript.
+Portfolio-ready multi-page cabin rental website built with semantic HTML, modern CSS, and
+lightweight JavaScript. No backend, no env vars.
 
-## What Was Improved
+## Features
 
-- Full visual redesign with a stronger brand system (typography, spacing, color, hierarchy)
-- Accessibility upgrades: skip links, keyboard-friendly mobile nav, better focus styles, clearer form labels
-- Performance upgrades: removed GSAP dependency, lazy-loaded non-critical images, reduced-motion support
-- SEO upgrades: canonical tags, Open Graph/Twitter metadata, JSON-LD schema, `robots.txt`, and `sitemap.xml`
-- UX copy refresh across all pages for clearer value proposition and stronger CTAs
-- Reservation flow upgrades with client-side date logic, live nightly subtotal estimates, and inline success/error messaging
-- Interactive cabin discovery tools: filter by guests, budget, pet-friendliness, and sort controls
-- FAQ instant search to quickly surface matching policy answers
+- Accessibility: skip links, keyboard-friendly mobile nav, visible focus styles, clear form labels
+- SEO: canonical tags, Open Graph/Twitter metadata, JSON-LD schema, `robots.txt`, `sitemap.xml`
+- Reservation flow with client-side date logic, live nightly subtotal estimates, inline
+  success/error messaging
+- Interactive cabin discovery: filter by guests, budget, pet-friendliness, and sort controls
+- FAQ instant search
 - Homepage trust proof strip and rotating testimonial carousel
-- Sticky booking prompt with dismiss state and lightweight event analytics (`window.dataLayer` + local queue)
+- Sticky booking prompt with dismiss state and lightweight event analytics (`window.dataLayer`
+  plus a local queue; no external analytics script)
 
 ## Tech
 
-- HTML5
-- CSS3
-- JavaScript (ES modules)
-- Vite
+- HTML5, CSS3, JavaScript (ES modules)
+- Vite (multi-page build)
+- Biome for lint/format
+- pnpm
 
-## Run Locally
+## Run locally
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 ## Build
 
 ```bash
-npm run build
+pnpm build
+pnpm preview   # preview the build
 ```
 
-## Project Structure
+## Project structure
 
-- `index.html` homepage
-- `cabins.html` cabin collection page
-- `reservations.html` reservation request page
-- `faq.html` FAQ page
-- `index.css` shared design system and global styles
-- `sub.css` sub-page layouts (cabins/faq/reservations)
-- `index.js` nav interactions, reveal animations, and form behavior
-- `robots.txt` crawler directives
-- `sitemap.xml` sitemap entries
+- `index.html` homepage, `cabins.html` cabin collection, `reservations.html` reservation
+  request, `faq.html` FAQ page
+- `index.css` shared design system and global styles; `sub.css` sub-page layouts
+- `index.js` nav interactions, reveal animations, form behavior
+- `public/` static assets, including `robots.txt` and `sitemap.xml`
+- `images/` site images
 
-## Deployment Note
+See `CLAUDE.md` for the full layout, conventions, and gotchas.
 
-If deploying to a different domain, update canonical URLs, Open Graph URLs, and sitemap URLs accordingly.
+## Deployment note
+
+If deploying to a different domain, update the canonical URLs, Open Graph URLs, and
+`sitemap.xml` URLs (currently hardcoded to `scenicforests.com`).

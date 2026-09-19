@@ -23,8 +23,8 @@ pnpm check             # biome:check then build
 pnpm audit              # pnpm audit --audit-level high
 ```
 
-Note: the README's quickstart uses the npm CLI, but the repo pins
-`packageManager: pnpm@10.34.5` and ships `pnpm-lock.yaml`. Use pnpm.
+The repo pins `packageManager: pnpm@10.34.5` and ships `pnpm-lock.yaml`; use pnpm (README
+fixed 2026-09-19, previously showed npm).
 
 ## Layout
 
