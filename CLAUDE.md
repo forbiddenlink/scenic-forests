@@ -6,7 +6,7 @@ framework), built with Vite. No backend, no env vars.
 ## Stack
 
 - HTML5, CSS3, vanilla JavaScript (ES modules)
-- Vite 8 (multi-page build)
+- Vite 6 (multi-page build; `pnpm.overrides` caps the `vite` devDependency's `8.2.2` specifier at `<7`, so the locked version is 6.4.3)
 - Biome 2 for lint/format
 - pnpm (`pnpm@10.34.5`)
 
