@@ -535,7 +535,7 @@ body.nav-open .menu-icon::after {
   font-size: 0.75rem;
   font-weight: 600;
   padding: 0.3rem 0.7rem;
-  color: var(--pine-700);
+  color: var(--pine-900);
   background: var(--moss-300);
 }
 
@@ -741,6 +741,11 @@ body.nav-open .menu-icon::after {
   color: var(--pine-800);
 }
 
+.demo-note {
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
 .footer-bottom {
   border-top: 1px solid rgba(29, 50, 38, 0.13);
   margin-top: 1.4rem;
@@ -789,6 +794,9 @@ body.has-floating-cta .site-main {
 }
 
 .breadcrumb {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;

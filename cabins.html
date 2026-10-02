@@ -36,11 +36,6 @@
                 ]
             }
         </script>
-        <!-- PostHog Analytics -->
-        <script>
-            !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init push capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-            posthog.init('phc_y15r12flE4emZrCDkAh4upaz9c204yAKaZ8Hb5eIUlj',{api_host:'https://us.i.posthog.com', person_profiles: 'identified_only'})
-        </script>
     </head>
     <body>
         <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -152,7 +147,7 @@
                                         <span class="cabin-tag">Fireplace</span>
                                         <span class="cabin-tag">Trail Access</span>
                                     </div>
-                                    <a class="card-link" href="reservations.html?cabin=whispering-willows">Check availability</a>
+                                    <a class="card-link" href="reservations.html?cabin=whispering-willows">Preview a booking</a>
                                 </div>
                             </article>
                         </li>
@@ -174,7 +169,7 @@
                                         <span class="cabin-tag">Deck</span>
                                         <span class="cabin-tag">Hot Tub</span>
                                     </div>
-                                    <a class="card-link" href="reservations.html?cabin=pine-haven">Check availability</a>
+                                    <a class="card-link" href="reservations.html?cabin=pine-haven">Preview a booking</a>
                                 </div>
                             </article>
                         </li>
@@ -196,7 +191,7 @@
                                         <span class="cabin-tag">Game Loft</span>
                                         <span class="cabin-tag">Outdoor Dining</span>
                                     </div>
-                                    <a class="card-link" href="reservations.html?cabin=forest-ridge">Check availability</a>
+                                    <a class="card-link" href="reservations.html?cabin=forest-ridge">Preview a booking</a>
                                 </div>
                             </article>
                         </li>
@@ -218,7 +213,7 @@
                                         <span class="cabin-tag">Private Deck</span>
                                         <span class="cabin-tag">Fire Pit</span>
                                     </div>
-                                    <a class="card-link" href="reservations.html?cabin=cedar-creek">Check availability</a>
+                                    <a class="card-link" href="reservations.html?cabin=cedar-creek">Preview a booking</a>
                                 </div>
                             </article>
                         </li>
@@ -240,7 +235,7 @@
                                         <span class="cabin-tag">Board Games</span>
                                         <span class="cabin-tag">Grill</span>
                                     </div>
-                                    <a class="card-link" href="reservations.html?cabin=maple-grove">Check availability</a>
+                                    <a class="card-link" href="reservations.html?cabin=maple-grove">Preview a booking</a>
                                 </div>
                             </article>
                         </li>
@@ -262,7 +257,7 @@
                                         <span class="cabin-tag">Outdoor Lounge</span>
                                         <span class="cabin-tag">Fast Wi-Fi</span>
                                     </div>
-                                    <a class="card-link" href="reservations.html?cabin=birch-haven">Check availability</a>
+                                    <a class="card-link" href="reservations.html?cabin=birch-haven">Preview a booking</a>
                                 </div>
                             </article>
                         </li>
@@ -282,9 +277,10 @@
             <div class="wrapper footer-grid">
                 <section class="footer-card" aria-label="Contact information">
                     <h3>Contact</h3>
-                    <p>1234 Forest Drive, Woodland, ST 12345</p>
-                    <p><a href="tel:+11234567890">+1 (123) 456-7890</a></p>
-                    <p><a href="mailto:hello@scenicforests.com">hello@scenicforests.com</a></p>
+                    <p>123 Example Street, Anytown, ST 00000</p>
+                    <p>(555) 010-0100</p>
+                    <p>hello@example.com</p>
+                    <p class="demo-note">Example details for a demo site. Nobody is reachable here.</p>
                 </section>
 
                 <section class="footer-card" aria-label="Quick navigation">
@@ -300,14 +296,14 @@
                     <h3>Guest Promise</h3>
                     <ul>
                         <li>Clear pricing and policies</li>
-                        <li>Response in under one business day</li>
+                        <li>Replies within one business day (example policy)</li>
                         <li>Locally curated activity recommendations</li>
                     </ul>
                 </section>
             </div>
 
             <div class="wrapper footer-bottom">
-                <p>&copy; 2026 Scenic Forests. All rights reserved.</p>
+                <p>&copy; 2026 Scenic Forests. Demo site: a fictional cabin rental built as a front-end portfolio piece. No bookings are made, no messages are read, and no payments are taken.</p>
             </div>
         </footer>
 

@@ -7,13 +7,15 @@ lightweight JavaScript. No backend, no env vars.
 
 - Accessibility: skip links, keyboard-friendly mobile nav, visible focus styles, clear form labels
 - SEO: canonical tags, Open Graph/Twitter metadata, JSON-LD schema, `robots.txt`, `sitemap.xml`
-- Reservation flow with client-side date logic, live nightly subtotal estimates, inline
-  success/error messaging
+- Demo booking preview: per-field validation, cabin capacity limits, `?cabin=` prefill,
+  timezone-safe date logic (`booking.js`, unit tested), price estimate, and a demo confirmation
+  screen. Nothing is sent: there is no backend and no form service
+- Demo labelling: banner on the form, footer notice on every page, example contact details
 - Interactive cabin discovery: filter by guests, budget, pet-friendliness, and sort controls
 - FAQ instant search
 - Homepage trust proof strip and rotating testimonial carousel
 - Sticky booking prompt with dismiss state and lightweight event analytics (`window.dataLayer`
-  plus a local queue; no external analytics script)
+  plus a local queue; no external analytics script, the dead PostHog snippet was removed)
 
 ## Tech
 
@@ -32,6 +34,7 @@ pnpm dev
 ## Build
 
 ```bash
+pnpm test      # vitest unit tests for booking.js
 pnpm build
 pnpm preview   # preview the build
 ```

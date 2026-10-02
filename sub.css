@@ -178,13 +178,50 @@
   padding: 1.3rem;
 }
 
+.reservation-main {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.demo-banner {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--clay-300);
+  background: var(--moss-300);
+  color: var(--pine-950);
+  padding: 0.85rem 1.1rem;
+  font-size: 0.93rem;
+}
+
+.demo-badge {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  border-radius: 999px;
+  background: var(--moss-300);
+  color: var(--pine-950);
+  padding: 0.25rem 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.field-error {
+  margin-top: 0.3rem;
+  color: var(--danger);
+  font-size: 0.85rem;
+}
+
+.form-field input[aria-invalid="true"],
+.form-field select[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+
 .form-group + .form-group {
   margin-top: 1.3rem;
   padding-top: 1.3rem;
   border-top: 1px solid rgba(24, 32, 24, 0.08);
 }
 
-.form-group h2 {
+.form-group h3 {
   font-family: "Cormorant Garamond", "Times New Roman", serif;
   font-size: 1.75rem;
   margin-bottom: 0.9rem;
@@ -304,6 +341,14 @@
 
 .summary-list .total-row dd {
   font-weight: 700;
+}
+
+.confirmation-card .summary-list {
+  margin: 1.1rem 0 0.6rem;
+}
+
+.confirmation-card .summary-list div {
+  font-size: 0.97rem;
 }
 
 .empty-results {
