@@ -51,10 +51,19 @@ const setNavState = (isOpen) => {
   primaryNav.classList.toggle('is-open', open)
   document.body.classList.toggle('nav-open', open)
   document.body.classList.toggle('no-scroll', open)
+
+  // A closed mobile panel must not be reachable by keyboard or screen reader.
+  const hidden = !isDesktop() && !open
+  primaryNav.inert = hidden
+  if (hidden) primaryNav.setAttribute('aria-hidden', 'true')
+  else primaryNav.removeAttribute('aria-hidden')
 }
 
 if (menuBtn && primaryNav) {
   setNavState(false)
+  window
+    .matchMedia('(min-width: 980px)')
+    .addEventListener('change', () => setNavState(menuBtn.getAttribute('aria-expanded') === 'true'))
 
   menuBtn.addEventListener('click', () => {
     const shouldOpen = menuBtn.getAttribute('aria-expanded') !== 'true'
@@ -71,8 +80,9 @@ if (menuBtn && primaryNav) {
   })
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
+    if (event.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') {
       setNavState(false)
+      menuBtn.focus()
     }
   })
 

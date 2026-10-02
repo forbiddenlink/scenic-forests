@@ -272,13 +272,18 @@ body.nav-open .menu-icon::after {
   background: linear-gradient(180deg, rgba(19, 39, 29, 0.97), rgba(18, 33, 26, 0.95));
   border-bottom-left-radius: var(--radius-lg);
   border-bottom-right-radius: var(--radius-lg);
-  transform: translateY(-135%);
-  transition: transform var(--ease);
+  transform: translateY(-150%);
+  visibility: hidden;
+  transition:
+    transform var(--ease),
+    visibility 0s linear 220ms;
   box-shadow: var(--shadow-lg);
 }
 
 .primary-nav.is-open {
   transform: translateY(0);
+  visibility: visible;
+  transition-delay: 0s;
 }
 
 .nav-list {
@@ -923,6 +928,7 @@ body.has-floating-cta .site-main {
 
   .primary-nav {
     position: static;
+    visibility: visible;
     transform: none;
     background: transparent;
     box-shadow: none;
