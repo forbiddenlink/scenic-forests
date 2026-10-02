@@ -1,3 +1,16 @@
+import {
+  addDays,
+  CABINS,
+  formatDate,
+  guestOptionsFor,
+  MIN_NIGHTS,
+  nightsBetween,
+  priceQuote,
+  resolveCabinParam,
+  todayLocal,
+  validateBooking,
+} from './booking.js'
+
 const menuBtn = document.getElementById('menu-btn')
 const primaryNav = document.getElementById('primary-nav')
 const navLinks = primaryNav ? Array.from(primaryNav.querySelectorAll('a')) : []
@@ -38,10 +51,19 @@ const setNavState = (isOpen) => {
   primaryNav.classList.toggle('is-open', open)
   document.body.classList.toggle('nav-open', open)
   document.body.classList.toggle('no-scroll', open)
+
+  // A closed mobile panel must not be reachable by keyboard or screen reader.
+  const hidden = !isDesktop() && !open
+  primaryNav.inert = hidden
+  if (hidden) primaryNav.setAttribute('aria-hidden', 'true')
+  else primaryNav.removeAttribute('aria-hidden')
 }
 
 if (menuBtn && primaryNav) {
   setNavState(false)
+  window
+    .matchMedia('(min-width: 980px)')
+    .addEventListener('change', () => setNavState(menuBtn.getAttribute('aria-expanded') === 'true'))
 
   menuBtn.addEventListener('click', () => {
     const shouldOpen = menuBtn.getAttribute('aria-expanded') !== 'true'
@@ -58,8 +80,9 @@ if (menuBtn && primaryNav) {
   })
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
+    if (event.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') {
       setNavState(false)
+      menuBtn.focus()
     }
   })
 
@@ -150,28 +173,6 @@ const currencyFormat = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 0,
 })
 
-const dateFormat = new Intl.DateTimeFormat('en-US', {
-  month: 'short',
-  day: 'numeric',
-  year: 'numeric',
-})
-
-const parseDate = (value) => {
-  const date = new Date(value)
-  return Number.isNaN(date.getTime()) ? null : date
-}
-
-const calculateNights = (start, end) => {
-  if (!start || !end) return 0
-
-  const startDate = parseDate(start)
-  const endDate = parseDate(end)
-
-  if (!startDate || !endDate) return 0
-  const milliseconds = endDate.getTime() - startDate.getTime()
-  return milliseconds > 0 ? Math.ceil(milliseconds / (1000 * 60 * 60 * 24)) : 0
-}
-
 const initFloatingCta = () => {
   const isReservationsPath =
     window.location.pathname.endsWith('/reservations.html') ||
@@ -188,8 +189,8 @@ const initFloatingCta = () => {
     floatingCta.hidden = true
     floatingCta.setAttribute('aria-label', 'Quick reservation call to action')
     floatingCta.innerHTML = `
-            <p>Planning a stay? Lock in your preferred dates now.</p>
-            <a href="reservations.html" class="btn btn-primary floating-cta-link">Reserve in 2 minutes</a>
+            <p>Planning a stay? Try the booking preview.</p>
+            <a href="reservations.html" class="btn btn-primary floating-cta-link">Preview a booking</a>
             <button type="button" class="floating-close" id="floatingCtaClose" aria-label="Dismiss booking prompt">Dismiss</button>
         `
     document.body.append(floatingCta)
@@ -448,162 +449,233 @@ const initFaqSearch = () => {
 
 const initReservationForm = () => {
   const bookingForm = document.getElementById('bookingForm')
-  const formStatus = document.getElementById('formStatus')
-
   if (!bookingForm) return
+
+  const formStatus = document.getElementById('formStatus')
+  const confirmation = document.getElementById('bookingConfirmation')
+  const confirmationHeading = document.getElementById('confirmationHeading')
+  const confirmationList = document.getElementById('confirmationList')
+  const startOver = document.getElementById('startOver')
 
   const cabinSelect = document.getElementById('cabin')
   const checkIn = document.getElementById('checkIn')
   const checkOut = document.getElementById('checkOut')
   const guests = document.getElementById('guests')
 
-  const summaryCabin = document.getElementById('summaryCabin')
-  const summaryDates = document.getElementById('summaryDates')
-  const summaryGuests = document.getElementById('summaryGuests')
-  const summaryNights = document.getElementById('summaryNights')
-  const summarySubtotal = document.getElementById('summarySubtotal')
-
-  const cabinRates = {
-    'whispering-willows': 280,
-    'pine-haven': 220,
-    'forest-ridge': 340,
-    'cedar-creek': 195,
-    'maple-grove': 265,
-    'birch-haven': 245,
+  const field = (id) => document.getElementById(id)
+  const setText = (id, text) => {
+    const el = field(id)
+    if (el) el.textContent = text
   }
+
+  const fieldIds = [
+    'firstName',
+    'lastName',
+    'email',
+    'phone',
+    'cabin',
+    'checkIn',
+    'checkOut',
+    'guests',
+  ]
 
   const showFormStatus = (type, message) => {
     if (!formStatus) return
-
     formStatus.textContent = message
     formStatus.classList.add('is-visible')
     formStatus.classList.toggle('is-error', type === 'error')
     formStatus.classList.toggle('is-success', type === 'success')
   }
 
+  const clearFormStatus = () => {
+    if (!formStatus) return
+    formStatus.textContent = ''
+    formStatus.classList.remove('is-visible', 'is-error', 'is-success')
+  }
+
+  const errorEl = (id) => {
+    let el = document.getElementById(`${id}-error`)
+    const input = field(id)
+    if (!el && input) {
+      el = document.createElement('span')
+      el.className = 'field-error'
+      el.id = `${id}-error`
+      el.hidden = true
+      input.closest('.form-field')?.append(el)
+    }
+    return el
+  }
+
+  const setFieldError = (id, message) => {
+    const input = field(id)
+    const el = errorEl(id)
+    if (!input || !el) return
+    el.textContent = message || ''
+    el.hidden = !message
+    if (message) {
+      input.setAttribute('aria-invalid', 'true')
+      input.setAttribute('aria-describedby', el.id)
+    } else {
+      input.removeAttribute('aria-invalid')
+      input.removeAttribute('aria-describedby')
+    }
+  }
+
+  const readValues = () => Object.fromEntries(fieldIds.map((id) => [id, field(id)?.value ?? '']))
+
+  const rebuildGuestOptions = () => {
+    if (!guests || !cabinSelect) return
+    const previous = guests.value
+    const options = guestOptionsFor(cabinSelect.value)
+    guests.replaceChildren(new Option('Select guest count', ''))
+    for (const count of options) {
+      guests.append(new Option(`${count} ${count === 1 ? 'guest' : 'guests'}`, String(count)))
+    }
+    guests.value = previous && Number(previous) <= options.length ? previous : ''
+  }
+
   const updateEstimate = () => {
-    if (!cabinSelect || !checkIn || !checkOut || !guests) return
+    const slug = cabinSelect?.value || ''
+    const nights = nightsBetween(checkIn?.value, checkOut?.value)
+    const quote = priceQuote(slug, nights)
+    const money = (n) => currencyFormat.format(n)
+    const hasQuote = quote.total > 0
 
-    const selectedCabin = cabinSelect.value
-    const selectedCabinLabel =
-      cabinSelect.options[cabinSelect.selectedIndex]?.text || 'Not selected'
-    const nightlyRate = cabinRates[selectedCabin] || 0
-    const nights = calculateNights(checkIn.value, checkOut.value)
-    const subtotal = nights * nightlyRate
-
-    if (summaryCabin) {
-      summaryCabin.textContent = selectedCabin ? selectedCabinLabel : 'Not selected'
-    }
-
-    if (summaryDates) {
-      const startDate = parseDate(checkIn.value)
-      const endDate = parseDate(checkOut.value)
-      summaryDates.textContent =
-        startDate && endDate
-          ? `${dateFormat.format(startDate)} - ${dateFormat.format(endDate)}`
-          : 'Choose check-in and check-out'
-    }
-
-    if (summaryGuests) {
-      const guestCount = guests.value ? Number(guests.value) : 0
-      summaryGuests.textContent = guestCount
-        ? `${guestCount} ${guestCount === 1 ? 'guest' : 'guests'}`
-        : 'Choose guest count'
-    }
-
-    if (summaryNights) {
-      summaryNights.textContent = `${nights} ${nights === 1 ? 'night' : 'nights'}`
-    }
-
-    if (summarySubtotal) {
-      summarySubtotal.textContent = subtotal > 0 ? currencyFormat.format(subtotal) : '$0'
-    }
+    setText('summaryCabin', CABINS[slug]?.name ?? 'Not selected')
+    setText(
+      'summaryDates',
+      nights > 0
+        ? `${formatDate(checkIn.value)} - ${formatDate(checkOut.value)}`
+        : 'Choose check-in and check-out'
+    )
+    const guestCount = guests?.value ? Number(guests.value) : 0
+    setText(
+      'summaryGuests',
+      guestCount ? `${guestCount} ${guestCount === 1 ? 'guest' : 'guests'}` : 'Choose guest count'
+    )
+    setText('summaryNights', `${nights} ${nights === 1 ? 'night' : 'nights'}`)
+    setText('summarySubtotal', hasQuote ? money(quote.subtotal) : '$0')
+    setText('summaryCleaning', hasQuote ? money(quote.cleaning) : '$0')
+    setText('summaryTax', hasQuote ? money(quote.tax) : '$0')
+    setText('summaryTotal', hasQuote ? money(quote.total) : '$0')
+    setText('summaryDeposit', hasQuote ? money(quote.deposit) : '$0')
   }
 
   const applyMinimumDates = () => {
     if (!checkIn || !checkOut) return
 
-    const today = new Date()
-    const todayIso = today.toISOString().split('T')[0]
-    checkIn.min = todayIso
+    const today = todayLocal()
+    checkIn.min = today
 
-    const baseDate = checkIn.value ? new Date(checkIn.value) : today
-    baseDate.setDate(baseDate.getDate() + 1)
-    const minimumCheckOut = baseDate.toISOString().split('T')[0]
+    const base = checkIn.value && checkIn.value >= today ? checkIn.value : today
+    const minimumCheckOut = addDays(base, MIN_NIGHTS)
     checkOut.min = minimumCheckOut
 
-    if (checkOut.value && checkOut.value <= checkIn.value) {
+    if (checkOut.value && checkOut.value < minimumCheckOut && checkIn.value) {
       checkOut.value = minimumCheckOut
     }
-
-    updateEstimate()
   }
 
+  // Prefill from ?cabin=, but only for a cabin that exists.
+  const cabinFromUrl = resolveCabinParam(new URLSearchParams(window.location.search).get('cabin'))
+  if (cabinSelect && cabinFromUrl) cabinSelect.value = cabinFromUrl
+
+  rebuildGuestOptions()
   applyMinimumDates()
+  updateEstimate()
 
-  const urlParams = new URLSearchParams(window.location.search)
-  const selectedCabinFromUrl = urlParams.get('cabin')
-  if (cabinSelect && selectedCabinFromUrl) {
-    cabinSelect.value = selectedCabinFromUrl
+  cabinSelect?.addEventListener('change', rebuildGuestOptions)
+  checkIn?.addEventListener('change', applyMinimumDates)
+  for (const input of [cabinSelect, checkIn, checkOut, guests]) {
+    input?.addEventListener('change', updateEstimate)
+  }
+  for (const id of fieldIds) {
+    const input = field(id)
+    const clear = () => setFieldError(id, '')
+    input?.addEventListener('input', clear)
+    input?.addEventListener('change', clear)
   }
 
-  ;[cabinSelect, checkIn, checkOut, guests].forEach((input) => {
-    input?.addEventListener('change', () => {
-      if (input === checkIn) {
-        applyMinimumDates()
-      }
-      updateEstimate()
-    })
-  })
+  const row = (label, value, className) => {
+    const wrap = document.createElement('div')
+    if (className) wrap.className = className
+    const dt = document.createElement('dt')
+    dt.textContent = label
+    const dd = document.createElement('dd')
+    dd.textContent = value
+    wrap.append(dt, dd)
+    return wrap
+  }
 
-  updateEstimate()
+  const showConfirmation = (values, nights, quote) => {
+    if (!confirmation || !confirmationList) return
+    const money = (n) => currencyFormat.format(n)
+    const cabin = CABINS[values.cabin]
+    const guestCount = Number(values.guests)
+
+    if (confirmationHeading) {
+      confirmationHeading.textContent = `Demo preview for ${values.firstName.trim()}`
+    }
+    confirmationList.replaceChildren(
+      row('Cabin', cabin.name),
+      row('Check-in', formatDate(values.checkIn)),
+      row('Check-out', formatDate(values.checkOut)),
+      row('Guests', `${guestCount} ${guestCount === 1 ? 'guest' : 'guests'}`),
+      row('Nights', String(nights)),
+      row(`${money(quote.nightly)} x ${nights} nights`, money(quote.subtotal)),
+      row('Cleaning fee (example)', money(quote.cleaning)),
+      row('Taxes (example)', money(quote.tax)),
+      row('Estimated total', money(quote.total), 'total-row'),
+      row('50% deposit that would be due', money(quote.deposit))
+    )
+    bookingForm.hidden = true
+    confirmation.hidden = false
+    confirmationHeading?.focus()
+    confirmation.scrollIntoView({ block: 'start' })
+  }
+
+  startOver?.addEventListener('click', () => {
+    bookingForm.reset()
+    if (cabinSelect && cabinFromUrl) cabinSelect.value = cabinFromUrl
+    for (const id of fieldIds) setFieldError(id, '')
+    clearFormStatus()
+    rebuildGuestOptions()
+    applyMinimumDates()
+    updateEstimate()
+    if (confirmation) confirmation.hidden = true
+    bookingForm.hidden = false
+    field('firstName')?.focus()
+  })
 
   bookingForm.addEventListener('submit', (event) => {
     event.preventDefault()
 
-    if (!bookingForm.checkValidity()) {
-      showFormStatus('error', 'Please complete all required fields before submitting.')
-      bookingForm.reportValidity()
-      trackEvent('reservation_submit_invalid')
+    const values = readValues()
+    const errors = validateBooking(values)
+    for (const id of fieldIds) setFieldError(id, errors[id])
+
+    const firstInvalid = fieldIds.find((id) => errors[id])
+    if (firstInvalid) {
+      const count = Object.keys(errors).length
+      showFormStatus(
+        'error',
+        `Fix ${count} ${count === 1 ? 'field' : 'fields'} to preview your booking.`
+      )
+      field(firstInvalid)?.focus()
+      trackEvent('reservation_submit_invalid', { fields: Object.keys(errors) })
       return
     }
 
-    if (!checkIn || !checkOut) {
-      showFormStatus('error', 'Unable to validate dates. Please refresh and try again.')
-      trackEvent('reservation_submit_error', { reason: 'missing_date_fields' })
-      return
-    }
-
-    const nights = calculateNights(checkIn.value, checkOut.value)
-    if (nights < 1) {
-      showFormStatus('error', 'Check-out must be at least one day after check-in.')
-      checkOut.focus()
-      trackEvent('reservation_submit_error', { reason: 'invalid_nights' })
-      return
-    }
-
-    const selectedCabin = cabinSelect?.value || ''
-    const nightlyRate = selectedCabin ? cabinRates[selectedCabin] || 0 : 0
-    const subtotal = nights * nightlyRate
-
-    showFormStatus(
-      'success',
-      'Availability request sent. Our reservation team will contact you within one business day.'
-    )
-    trackEvent('reservation_submit_success', {
-      cabin: selectedCabin,
-      guests: guests?.value || '',
+    clearFormStatus()
+    const nights = nightsBetween(values.checkIn, values.checkOut)
+    const quote = priceQuote(values.cabin, nights)
+    trackEvent('reservation_demo_preview', {
+      cabin: values.cabin,
+      guests: Number(values.guests),
       nights,
-      subtotal,
+      total: quote.total,
     })
-
-    bookingForm.reset()
-    if (cabinSelect && selectedCabinFromUrl) {
-      cabinSelect.value = selectedCabinFromUrl
-    }
-
-    applyMinimumDates()
-    updateEstimate()
+    showConfirmation(values, nights, quote)
   })
 }
 

@@ -272,13 +272,18 @@ body.nav-open .menu-icon::after {
   background: linear-gradient(180deg, rgba(19, 39, 29, 0.97), rgba(18, 33, 26, 0.95));
   border-bottom-left-radius: var(--radius-lg);
   border-bottom-right-radius: var(--radius-lg);
-  transform: translateY(-135%);
-  transition: transform var(--ease);
+  transform: translateY(-150%);
+  visibility: hidden;
+  transition:
+    transform var(--ease),
+    visibility 0s linear 220ms;
   box-shadow: var(--shadow-lg);
 }
 
 .primary-nav.is-open {
   transform: translateY(0);
+  visibility: visible;
+  transition-delay: 0s;
 }
 
 .nav-list {
@@ -535,7 +540,7 @@ body.nav-open .menu-icon::after {
   font-size: 0.75rem;
   font-weight: 600;
   padding: 0.3rem 0.7rem;
-  color: var(--pine-700);
+  color: var(--pine-900);
   background: var(--moss-300);
 }
 
@@ -741,6 +746,11 @@ body.nav-open .menu-icon::after {
   color: var(--pine-800);
 }
 
+.demo-note {
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
 .footer-bottom {
   border-top: 1px solid rgba(29, 50, 38, 0.13);
   margin-top: 1.4rem;
@@ -789,6 +799,9 @@ body.has-floating-cta .site-main {
 }
 
 .breadcrumb {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
@@ -915,6 +928,7 @@ body.has-floating-cta .site-main {
 
   .primary-nav {
     position: static;
+    visibility: visible;
     transform: none;
     background: transparent;
     box-shadow: none;
