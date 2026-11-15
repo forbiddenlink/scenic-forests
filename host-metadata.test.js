@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
-import { readFileSync, readdirSync, existsSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import { describe, expect, it } from 'vitest'
 
 const root = resolve(__dirname)
 const pages = readdirSync(root).filter((f) => f.endsWith('.html'))
