@@ -52,5 +52,7 @@ See `CLAUDE.md` for the full layout, conventions, and gotchas.
 
 ## Deployment note
 
-If deploying to a different domain, update the canonical URLs, Open Graph URLs, and
-`sitemap.xml` URLs (currently hardcoded to `scenicforests.com`).
+The site is not deployed and `scenicforests.com` does not resolve, so canonicals, og:url and og:image are
+relative and `sitemap.xml` is removed (sitemaps and the `robots.txt` Sitemap line need absolute URLs).
+After the first real deploy, add absolute URLs for the production host in the HTML heads, restore
+`public/sitemap.xml` and add a `Sitemap:` line to `public/robots.txt`.
